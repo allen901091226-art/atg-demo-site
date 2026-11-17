@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100f1c">
+  <meta name="description" content="ATG 戰神賽特 2：覺醒之力 — 介面互動展示網站，不提供真實 USDT 或資金。">
+  <title>ATG 戰神賽特 2・覺醒之力｜互動展示</title>
+  <style>
+    :root { color-scheme:dark; --gold:#ffda6a; --gold-deep:#c28229; --ink:#f8f4ec; --muted:#b9b1c4; }
+    *,*::before,*::after{box-sizing:border-box}
+    html{min-height:100%;font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+    body{margin:0;min-height:100vh;min-height:100dvh;color:var(--ink);background:#100f1c;overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 50% 12%,#7f4b2550 0%,transparent 52%),radial-gradient(ellipse at 12% 78%,#5a2b6880 0%,transparent 42%),radial-gradient(ellipse at 90% 80%,#55341e80 0%,transparent 35%),linear-gradient(135deg,#100e17,#191323 52%,#080b15)}
+    body::after{content:"";position:fixed;inset:0;z-index:-1;opacity:.15;pointer-events:none;background-image:linear-gradient(90deg,transparent 97%,#fff2 100%),linear-gradient(transparent 97%,#fff2 100%);background-size:42px 42px;mask-image:linear-gradient(to bottom,transparent 0%,#000 100%)}
+    .topbar{width:min(1040px,calc(100% - 40px));margin:auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:27px 0 8px}
+    .brand{display:flex;align-items:center;gap:10px;color:var(--gold);font-size:15px;font-weight:900;letter-spacing:.07em}
+    .brand-mark{display:grid;place-items:center;width:36px;height:36px;border:1px solid #ffe7a688;border-radius:11px;background:linear-gradient(135deg,#ffe7a522,#ffb70008);font-size:20px}
+    .top-note{font-size:12px;color:#d9cdb8;border:1px solid #9e864a70;border-radius:30px;padding:7px 11px;background:#0e0b0b70}
+    main{width:min(1040px,calc(100% - 40px));margin:auto;min-height:calc(100dvh - 142px);display:grid;grid-template-columns:1fr 425px;align-items:center;gap:60px;padding:30px 0 58px}
+    .eyebrow{text-transform:uppercase;font-size:12px;font-weight:900;letter-spacing:.26em;color:#e7c98a;margin:0 0 23px}
+    .hero-title{font-size:clamp(48px,6.5vw,86px);line-height:1.09;letter-spacing:-.04em;margin:0 0 22px;font-weight:950}
+    .hero-title span{display:block;background:linear-gradient(115deg,#fff8d3 1%,#ffd26c 39%,#bd7625 83%);background-clip:text;-webkit-background-clip:text;color:transparent;text-shadow:0 10px 36px #e5a93a17}
+    .hero-description{max-width:490px;color:#e5dfe8;opacity:.92;font-size:17px;line-height:1.85;margin:0 0 24px}
+    .hero-tags{display:flex;gap:10px;flex-wrap:wrap}.tag{border:1px solid #a9987e55;background:#ffffff08;color:#d5c7b5;font-size:12px;border-radius:7px;padding:8px 12px}
+    .card{position:relative;isolation:isolate;width:100%;padding:31px;border:1px solid #f5cd73a0;border-radius:25px;background:linear-gradient(150deg,#24202cfa,#17131ffd 76%);box-shadow:0 23px 70px #02010b8a,0 0 35px #ecaa3d1e, inset 0 1px #fff3;overflow:hidden}
+    .card::before{content:"";position:absolute;z-index:-1;inset:-40% -10% auto -10%;height:260px;background:radial-gradient(ellipse,#c9832361,transparent 67%);pointer-events:none}
+    .card-label{display:inline-flex;align-items:center;gap:7px;color:#f7d79a;border:1px solid #b08d486b;border-radius:30px;padding:7px 12px;font-size:11px;font-weight:800;letter-spacing:.08em;background:#66431928}
+    .card-icon{display:grid;place-items:center;margin:19px auto 8px;width:94px;height:94px;border-radius:50%;border:1px solid #ffe3a366;background:radial-gradient(circle at 33% 28%,#ffedab,#dfa341 40%,#8a4415 80%);box-shadow:0 0 43px #efad4466,inset 0 0 12px #fff8;font-size:48px}
+    .card h2{text-align:center;font-size:26px;color:#ffda7a;margin:8px 0 5px;letter-spacing:.045em;line-height:1.35}
+    .card-sub{text-align:center;margin:0 0 24px;font-size:14px;color:#d8cbcb}
+    .amount-panel{padding:18px;border:1px solid #b18c4e70;background:#080a13a8;border-radius:13px;text-align:center}
+    .amount-label{font-size:12px;color:#bcb4c6;letter-spacing:.05em;margin-bottom:5px}
+    .amount{font-variant-numeric:tabular-nums;font-size:36px;font-weight:900;line-height:1.25;color:#f6e9c9;letter-spacing:-.03em}
+    .amount small{font-size:15px;color:#e7bd6c;letter-spacing:0}
+    button{font:inherit;cursor:pointer}
+    .claim{width:100%;margin-top:17px;border:0;border-radius:12px;padding:16px;background:linear-gradient(120deg,#fff2ad,#efb747 47%,#ce8124);box-shadow:0 8px 21px #b66e243e;transition:transform .2s,filter .2s;color:#211405;font-size:16px;font-weight:900}
+    .claim:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.08)}
+    .claim:focus-visible,.reset:focus-visible{outline:3px solid #fff6cf;outline-offset:3px}
+    .claim:disabled{opacity:.8;cursor:default}
+    .status{min-height:25px;text-align:center;margin:15px 0 0;font-size:13px;line-height:1.7;color:#f6d990}
+    .status.success{color:#94e4b1}
+    .reset{display:block;background:transparent;border:0;color:#a7a3b0;text-decoration:underline;text-underline-offset:3px;font-size:12px;margin:4px auto 0;padding:6px 10px}
+    .fine-print{margin:17px 0 0;padding-top:14px;border-top:1px solid #eccc7229;color:#c4bccc;font-size:11px;line-height:1.8;text-align:center}
+    footer{padding:0 20px 27px;text-align:center;color:#9f96a7;font-size:12px}
+    @media(max-width:780px){.topbar{padding-top:18px}.top-note{font-size:10px}main{grid-template-columns:1fr;max-width:480px;gap:29px;padding:54px 0 44px;min-height:auto}.intro{text-align:center}.hero-description{font-size:14px;margin-inline:auto}.eyebrow{margin-bottom:12px}.hero-title{font-size:clamp(43px,12vw,64px);margin-bottom:18px}.hero-tags{justify-content:center}.card{padding:25px 21px}.card-icon{width:80px;height:80px;font-size:40px}}
+    @media(max-width:380px){.topbar{width:calc(100% - 26px)}main{width:calc(100% - 26px)}.brand{font-size:12px}.brand-mark{width:30px;height:30px}.top-note{padding:6px 8px}.card h2{font-size:23px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">✦</span><span>ATG · 展示網站</span></div>
+    <span class="top-note">非官方｜介面體驗展示</span>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="headline">
+      <p class="eyebrow">MYTH · POWER · AWAKENING</p>
+      <h1 class="hero-title" id="headline">戰神賽特 2<span>覺醒之力</span></h1>
+      <p class="hero-description">沉浸式金色主題體驗，探索互動介面的光影與動態。點擊右側的體驗按鈕，即可觀看示範效果。</p>
+      <div class="hero-tags"><span class="tag">⚡ 即點即玩</span><span class="tag">✦ 手機版友善</span><span class="tag">◇ 純前端展示</span></div>
+    </section>
+    <section class="card" aria-label="點數模擬體驗卡">
+      <span class="card-label">✦ DEMO EXPERIENCE</span>
+      <div class="card-icon" aria-hidden="true">🏛️</div>
+      <h2>互動體驗展示</h2>
+      <p class="card-sub">體驗 100 枚虛擬展示點數的介面效果</p>
+      <div class="amount-panel" aria-live="polite" aria-atomic="true">
+        <div class="amount-label">目前展示點數</div>
+        <div class="amount"><span id="balance">0</span> <small>DEMO</small></div>
+      </div>
+      <button class="claim" id="claim" type="button">啟動 100 點模擬體驗</button>
+      <p id="status" class="status" role="status" aria-live="polite">無需輸入電話或個人資料</p>
+      <button class="reset" id="reset" type="button">重設展示效果</button>
+      <p class="fine-print">本頁僅供網站介面與按鈕功能展示。點數並非 USDT、現金或可兌換資產；不會發放、存入或轉移任何真實資金，也不代表 ATG 官方活動。</p>
+    </section>
+  </main>
+  <footer>© <span id="year">2026</span> ATG 風格介面示範 · 僅供學習及展示</footer>
+  <script>
+    (() => {
+      'use strict';
+      const claim = document.getElementById('claim');
+      const reset = document.getElementById('reset');
+      const balance = document.getElementById('balance');
+      const status = document.getElementById('status');
+      let pending = null;
+      document.getElementById('year').textContent = new Date().getFullYear();
+      claim.addEventListener('click', () => {
+        if (pending !== null) return;
+        claim.disabled = true;
+        claim.textContent = '正在演示點數效果…';
+        status.className = 'status';
+        status.textContent = '這是純介面演示，不連線任何金流或錢包。';
+        pending = window.setTimeout(() => {
+          pending = null;
+          balance.textContent = '100';
+          status.className = 'status success';
+          status.textContent = '展示完成：100 枚虛擬點數已顯示。';
+          claim.textContent = '再看一次模擬效果';
+          claim.disabled = false;
+        }, 850);
+      });
+      reset.addEventListener('click', () => {
+        if (pending !== null) window.clearTimeout(pending);
+        pending = null;
+        balance.textContent = '0';
+        status.className = 'status';
+        status.textContent = '已重設；這些點數僅用於介面展示。';
+        claim.textContent = '啟動 100 點模擬體驗';
+        claim.disabled = false;
+      });
+    })();
+  </script>
+</body>
+</html>
